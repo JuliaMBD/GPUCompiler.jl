@@ -61,7 +61,7 @@ function irgen(@nospecialize(job::CompilerJob), method_instance::Core.MethodInst
 
     # rename and process the entry point
     if job.source.name !== nothing
-        LLVM.name!(entry, safe_name(string("julia_", job.source.name)))
+        LLVM.name!(entry, safe_name(job.source.name))
     end
     if job.source.kernel
         LLVM.name!(entry, mangle_call(entry, job.source.tt))
